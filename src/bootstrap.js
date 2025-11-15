@@ -231,6 +231,7 @@ async function importPacks() {
       ],
       ctaText: 'Démarrer mon projet',
       ctaUrl: '/contact',
+      locale: 'fr',
       publishedAt: Date.now(),
     },
     {
@@ -260,6 +261,7 @@ async function importPacks() {
       ],
       ctaText: 'Démarrer mon projet',
       ctaUrl: '/contact',
+      locale: 'fr',
       publishedAt: Date.now(),
     },
     {
@@ -289,6 +291,7 @@ async function importPacks() {
       ],
       ctaText: 'Démarrer mon projet',
       ctaUrl: '/contact',
+      locale: 'fr',
       publishedAt: Date.now(),
     },
   ];
