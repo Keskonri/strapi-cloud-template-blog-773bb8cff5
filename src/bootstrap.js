@@ -171,6 +171,14 @@ async function updateBlocks(blocks) {
 async function importArticles() {
   console.log('📰 Creating initial blog articles (FR & EN)...');
 
+  // Delete all existing articles first
+  console.log('  → Deleting existing articles...');
+  const existingArticles = await strapi.documents('api::article.article').findMany();
+  for (const article of existingArticles) {
+    await strapi.documents('api::article.article').delete({ documentId: article.documentId });
+  }
+  console.log(`  → Deleted ${existingArticles.length} existing articles`);
+
   // French articles
   console.log(`  → Importing ${articlesFR.length} French articles...`);
   for (const article of articlesFR) {
@@ -182,6 +190,8 @@ async function importArticles() {
   for (const article of articlesEN) {
     await createEntry({ model: 'article', entry: { ...article, locale: 'en' } });
   }
+
+  console.log('  ✅ Articles import complete!');
 }
 
 async function importCategories() {
