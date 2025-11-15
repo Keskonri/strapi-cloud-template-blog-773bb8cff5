@@ -195,13 +195,32 @@ async function importArticles() {
 }
 
 async function importCategories() {
+  console.log('📂 Creating initial categories...');
+
+  // Delete all existing categories first
+  console.log('  → Deleting existing categories...');
+  const existingCategories = await strapi.documents('api::category.category').findMany();
+  for (const category of existingCategories) {
+    await strapi.documents('api::category.category').delete({ documentId: category.documentId });
+  }
+  console.log(`  → Deleted ${existingCategories.length} existing categories`);
+
   for (const category of categories) {
     await createEntry({ model: 'category', entry: category });
   }
+  console.log('  ✅ Categories import complete!');
 }
 
 async function importPacks() {
   console.log('📦 Creating initial packs (FR)...');
+
+  // Delete all existing packs first (FR + EN)
+  console.log('  → Deleting existing packs...');
+  const existingPacks = await strapi.documents('api::pack.pack').findMany();
+  for (const pack of existingPacks) {
+    await strapi.documents('api::pack.pack').delete({ documentId: pack.documentId });
+  }
+  console.log(`  → Deleted ${existingPacks.length} existing packs`);
 
   const packsFR = [
     {
@@ -299,6 +318,7 @@ async function importPacks() {
   for (const pack of packsFR) {
     await createEntry({ model: 'pack', entry: pack });
   }
+  console.log('  ✅ French packs import complete!');
 }
 
 async function importPacksEN() {
@@ -400,10 +420,19 @@ async function importPacksEN() {
   for (const pack of packsEN) {
     await createEntry({ model: 'pack', entry: pack });
   }
+  console.log('  ✅ English packs import complete!');
 }
 
 async function importProjects() {
   console.log('🏨 Creating initial projects...');
+
+  // Delete all existing projects first
+  console.log('  → Deleting existing projects...');
+  const existingProjects = await strapi.documents('api::project.project').findMany();
+  for (const project of existingProjects) {
+    await strapi.documents('api::project.project').delete({ documentId: project.documentId });
+  }
+  console.log(`  → Deleted ${existingProjects.length} existing projects`);
 
   const projects = [
     {
@@ -447,6 +476,7 @@ async function importProjects() {
   for (const project of projects) {
     await createEntry({ model: 'project', entry: project });
   }
+  console.log('  ✅ Projects import complete!');
 }
 
 async function importSeedData() {
