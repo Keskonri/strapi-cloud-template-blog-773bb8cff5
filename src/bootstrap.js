@@ -8,7 +8,8 @@ const { categories, authors, articles, global, about } = require('../data/data.j
 async function seedExampleApp() {
   const shouldImportSeedData = await isFirstRun();
 
-  if (shouldImportSeedData) {
+  // FORCE IMPORT - Temporarily bypassing the first run check
+  if (true) {
     try {
       console.log('Setting up the template...');
       await importSeedData();
