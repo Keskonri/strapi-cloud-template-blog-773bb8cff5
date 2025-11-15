@@ -238,9 +238,9 @@ async function importAuthors() {
 }
 
 async function importPacks() {
-  console.log('📦 Creating initial packs...');
+  console.log('📦 Creating initial packs (FR)...');
 
-  const packs = [
+  const packsFR = [
     {
       title: 'Pack Essentiel',
       slug: 'pack-essentiel',
@@ -330,7 +330,108 @@ async function importPacks() {
     },
   ];
 
-  for (const pack of packs) {
+  for (const pack of packsFR) {
+    await createEntry({ model: 'pack', entry: pack });
+  }
+}
+
+async function importPacksEN() {
+  console.log('📦 Creating initial packs (EN)...');
+
+  const packsEN = [
+    {
+      title: 'Essential Pack',
+      slug: 'essential-pack',
+      subtitle: 'Your turnkey digital presence',
+      description: 'Ideal for small establishments (< 20 rooms) looking to launch their online presence with a professional and high-performing website.',
+      period: 'From €1,500',
+      currency: 'EUR',
+      popular: false,
+      category: 'Showcase website',
+      order: 1,
+      delay: '2-3 weeks',
+      idealFor: 'Small establishments (< 20 rooms), quick launch',
+      features: [
+        { feature: '5-page responsive showcase website', included: true },
+        { feature: 'Custom design in your brand colors', included: true },
+        { feature: 'Optimized photo gallery', included: true },
+        { feature: 'Secure contact form', included: true },
+        { feature: 'Basic SEO (tags, meta descriptions)', included: true },
+        { feature: 'Google Analytics & Search Console', included: true },
+        { feature: 'Website management training', included: true },
+        { feature: '3-month support included', included: true },
+        { feature: 'Online booking system', included: false },
+        { feature: 'Blog & Content marketing', included: false },
+        { feature: 'Multilingual', included: false },
+      ],
+      ctaText: 'Start my project',
+      ctaUrl: '/contact',
+      locale: 'en',
+      publishedAt: Date.now(),
+    },
+    {
+      title: 'Performance Pack',
+      slug: 'performance-pack',
+      subtitle: 'Boost your direct bookings',
+      description: 'The complete solution for hotels and resorts looking to maximize direct bookings and reduce OTA dependence.',
+      period: 'From €3,500',
+      currency: 'EUR',
+      popular: true,
+      category: 'Website with booking',
+      order: 2,
+      delay: '4-6 weeks',
+      idealFor: '3-4* hotels, gourmet restaurants, spas',
+      features: [
+        { feature: 'Everything from Essential Pack', included: true },
+        { feature: 'Integrated booking engine', included: true },
+        { feature: 'Real-time availability management', included: true },
+        { feature: 'Secure online payment (Stripe)', included: true },
+        { feature: 'Multilingual website (2 languages)', included: true },
+        { feature: 'Integrated blog for content marketing', included: true },
+        { feature: 'Advanced SEO optimization', included: true },
+        { feature: 'Channel Manager integration (optional)', included: true },
+        { feature: 'Automated confirmation emails', included: true },
+        { feature: '12-month priority support', included: true },
+        { feature: 'Digital marketing strategy', included: false },
+      ],
+      ctaText: 'Start my project',
+      ctaUrl: '/contact',
+      locale: 'en',
+      publishedAt: Date.now(),
+    },
+    {
+      title: 'Premium Pack',
+      slug: 'premium-pack',
+      subtitle: 'All-inclusive enterprise solution',
+      description: 'For hotel groups and prestigious establishments requiring an exceptional digital solution with dedicated support.',
+      period: 'Custom quote (from €7,000)',
+      currency: 'EUR',
+      popular: false,
+      category: 'Complete solution',
+      order: 3,
+      delay: '6-10 weeks',
+      idealFor: '4-5* hotels, boutique hotels, luxury properties, premium brands',
+      features: [
+        { feature: 'Everything from Performance Pack', included: true },
+        { feature: 'Ultra-customized premium design', included: true },
+        { feature: 'Custom development', included: true },
+        { feature: 'Unlimited multilingual', included: true },
+        { feature: 'Advanced PMS integrations', included: true },
+        { feature: 'Custom analytics dashboard', included: true },
+        { feature: '12-month SEO & content strategy', included: true },
+        { feature: 'Google Ads campaigns included', included: true },
+        { feature: 'Complete team training', included: true },
+        { feature: 'Unlimited dedicated support', included: true },
+        { feature: 'Dedicated project manager', included: true },
+      ],
+      ctaText: 'Start my project',
+      ctaUrl: '/contact',
+      locale: 'en',
+      publishedAt: Date.now(),
+    },
+  ];
+
+  for (const pack of packsEN) {
     await createEntry({ model: 'pack', entry: pack });
   }
 }
@@ -401,6 +502,7 @@ async function importSeedData() {
   await importGlobal();
   await importAbout();
   await importPacks();
+  await importPacksEN();
   await importProjects();
 }
 
