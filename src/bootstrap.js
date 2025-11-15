@@ -236,6 +236,151 @@ async function importAuthors() {
   }
 }
 
+async function importPacks() {
+  console.log('📦 Creating initial packs...');
+
+  const packs = [
+    {
+      title: 'Pack Essentiel',
+      slug: 'pack-essentiel',
+      subtitle: 'Votre présence digitale clé en main',
+      description: 'Idéal pour les petits établissements (< 20 chambres) souhaitant lancer leur présence en ligne avec un site professionnel et performant.',
+      period: 'À partir de 1 500€',
+      currency: 'EUR',
+      popular: false,
+      category: 'Site vitrine',
+      order: 1,
+      delay: '2-3 semaines',
+      idealFor: 'Petits établissements (< 20 chambres), lancement rapide',
+      features: [
+        { feature: 'Site vitrine 5 pages responsive', included: true },
+        { feature: 'Design sur-mesure aux couleurs de votre établissement', included: true },
+        { feature: 'Galerie photos optimisée', included: true },
+        { feature: 'Formulaire de contact sécurisé', included: true },
+        { feature: 'SEO de base (balises, meta descriptions)', included: true },
+        { feature: 'Google Analytics & Search Console', included: true },
+        { feature: 'Formation à la gestion du site', included: true },
+        { feature: 'Support 3 mois inclus', included: true },
+        { feature: 'Système de réservation en ligne', included: false },
+        { feature: 'Blog & Content marketing', included: false },
+        { feature: 'Multilingue', included: false },
+      ],
+      ctaText: 'Démarrer mon projet',
+      ctaUrl: '/contact',
+      publishedAt: Date.now(),
+    },
+    {
+      title: 'Pack Performance',
+      slug: 'pack-performance',
+      subtitle: 'Boostez vos réservations directes',
+      description: 'La solution complète pour les hôtels et resorts souhaitant maximiser leurs réservations directes et réduire leur dépendance aux OTA.',
+      period: 'À partir de 3 500€',
+      currency: 'EUR',
+      popular: true,
+      category: 'Site avec booking',
+      order: 2,
+      delay: '4-6 semaines',
+      idealFor: 'Hôtels 3-4*, restaurants gastronomiques, spas',
+      features: [
+        { feature: 'Tout du Pack Essentiel', included: true },
+        { feature: 'Moteur de réservation intégré', included: true },
+        { feature: 'Gestion des disponibilités en temps réel', included: true },
+        { feature: 'Paiement en ligne sécurisé (Stripe)', included: true },
+        { feature: 'Site multilingue (2 langues)', included: true },
+        { feature: 'Blog intégré pour content marketing', included: true },
+        { feature: 'Optimisation SEO avancée', included: true },
+        { feature: 'Intégration Channel Manager (optionnel)', included: true },
+        { feature: 'Emails automatiques de confirmation', included: true },
+        { feature: 'Support 12 mois prioritaire', included: true },
+        { feature: 'Stratégie marketing digital', included: false },
+      ],
+      ctaText: 'Démarrer mon projet',
+      ctaUrl: '/contact',
+      publishedAt: Date.now(),
+    },
+    {
+      title: 'Pack Premium',
+      slug: 'pack-premium',
+      subtitle: 'Solution enterprise tout-inclus',
+      description: 'Pour les groupes hôteliers et établissements prestigieux exigeant une solution digitale d\'exception avec accompagnement dédié.',
+      period: 'Sur devis (à partir de 7 000€)',
+      currency: 'EUR',
+      popular: false,
+      category: 'Solution complète',
+      order: 3,
+      delay: '6-10 semaines',
+      idealFor: 'Hôtels 4-5*, boutique-hôtels, palaces, marques de luxe',
+      features: [
+        { feature: 'Tout du Pack Performance', included: true },
+        { feature: 'Design premium ultra-personnalisé', included: true },
+        { feature: 'Développement sur-mesure', included: true },
+        { feature: 'Multilingue illimité', included: true },
+        { feature: 'Intégrations PMS avancées', included: true },
+        { feature: 'Dashboard analytics personnalisé', included: true },
+        { feature: 'Stratégie SEO & content 12 mois', included: true },
+        { feature: 'Campagnes Google Ads incluses', included: true },
+        { feature: 'Formation équipe complète', included: true },
+        { feature: 'Support dédié illimité', included: true },
+        { feature: 'Chef de projet attitré', included: true },
+      ],
+      ctaText: 'Démarrer mon projet',
+      ctaUrl: '/contact',
+      publishedAt: Date.now(),
+    },
+  ];
+
+  for (const pack of packs) {
+    await createEntry({ model: 'pack', entry: pack });
+  }
+}
+
+async function importProjects() {
+  console.log('🏨 Creating initial projects...');
+
+  const projects = [
+    {
+      title: 'Refonte Site Web - Hôtel Le Royal Paris',
+      slug: 'hotel-royal-paris',
+      category: 'Hôtellerie de luxe',
+      client: 'Hôtel Le Royal Paris',
+      year: '2024',
+      description: 'Transformation digitale complète d\'un palace parisien historique. Création d\'un site vitrine premium avec système de réservation directe, galerie photos immersive et expérience mobile optimisée.',
+      content: `## Le Challenge\n\nL'Hôtel Le Royal Paris, établissement 5 étoiles situé sur les Champs-Élysées, souffrait d'une dépendance excessive aux OTA (plus de 70% des réservations) et d'un site web vieillissant ne reflétant pas le standing de l'établissement.\n\n## Notre Solution\n\nNous avons développé une plateforme web moderne intégrant :\n\n- **Design premium** : Interface élégante reflétant le luxe de l'établissement\n- **Moteur de réservation** : Système de booking intégré avec gestion des disponibilités en temps réel\n- **Galerie immersive** : Parcours photo 360° des suites et espaces communs\n- **Performance optimale** : Temps de chargement < 2 secondes, score PageSpeed 95+\n- **Multilingue** : FR, EN, ZH pour cibler la clientèle internationale\n\n## Les Résultats\n\nAprès 6 mois de mise en ligne :\n\n- **+156%** de réservations directes\n- **-42%** de commissions OTA\n- **€87,000** d'économies annuelles\n- **4.8/5** satisfaction client (Google Reviews)`,
+      tags: ['Hôtellerie de luxe', 'Réservation en ligne', 'Site vitrine', 'Design premium', 'SEO', 'Multilingue'],
+      projectUrl: 'https://hotel-royal-paris.fr',
+      publishedAt: Date.now(),
+    },
+    {
+      title: 'Site Web & Booking - Palais Zen Resort',
+      slug: 'palais-zen-marrakech',
+      category: 'Resort & Spa',
+      client: 'Palais Zen Resort & Spa',
+      year: '2023',
+      description: 'Création d\'une plateforme de réservation complète pour un resort 5* à Marrakech. Intégration d\'un moteur de réservation spa, gestion des forfaits bien-être, et optimisation SEO ciblant les marchés français et européens.',
+      content: `## Le Contexte\n\nPalais Zen Resort & Spa, établissement haut de gamme de 120 chambres à Marrakech, cherchait à augmenter ses réservations directes et à promouvoir ses offres spa auprès d'une clientèle européenne aisée.\n\n## Notre Approche\n\n- **Stratégie visuelle** : Mise en avant des espaces zen et des soins spa\n- **Booking intelligent** : Packages chambres + spa en un clic\n- **Content marketing** : Blog bien-être et guides Marrakech\n- **SEO ciblé** : Positionnement sur "spa luxe marrakech", "resort bien-être"\n\n## Impact Mesuré\n\n- **+203%** de trafic organique en 12 mois\n- **+89%** de réservations spa en ligne\n- **€124,000** de CA additionnel annuel\n- **3.2x** ROI première année`,
+      tags: ['Resort', 'Spa', 'Réservation en ligne', 'Content marketing', 'SEO international', 'Maroc'],
+      projectUrl: 'https://palais-zen-marrakech.com',
+      publishedAt: Date.now(),
+    },
+    {
+      title: 'Boutique Hotel - La Villa des Vignes',
+      slug: 'villa-vignes-bordeaux',
+      category: 'Boutique Hotel',
+      client: 'La Villa des Vignes',
+      year: '2024',
+      description: 'Développement d\'un site web authentique pour un boutique hotel de 15 chambres au cœur des vignobles bordelais. Focus sur l\'œnotourisme et les expériences locales avec un système de réservation simplifié.',
+      content: `## Le Projet\n\nPetit établissement familial de charme, La Villa des Vignes souhaitait moderniser sa présence en ligne tout en conservant son authenticité et son âme locale.\n\n## Notre Réalisation\n\n- **Storytelling visuel** : Photos authentiques du domaine et des vignobles\n- **Expériences** : Mise en avant des dégustations et visites guidées\n- **Réservation simple** : Parcours user-friendly adapté aux mobiles\n- **Local SEO** : Optimisation pour "hotel vignobles bordeaux", "œnotourisme"\n\n## Performances\n\n- **+67%** de réservations directes\n- **91%** taux de satisfaction\n- Top 3 Google "hotel vignoble bordeaux"`,
+      tags: ['Boutique Hotel', 'Œnotourisme', 'Bordeaux', 'SEO local', 'Storytelling', 'Expérience client'],
+      projectUrl: 'https://villa-vignes-bordeaux.fr',
+      publishedAt: Date.now(),
+    },
+  ];
+
+  for (const project of projects) {
+    await createEntry({ model: 'project', entry: project });
+  }
+}
+
 async function importSeedData() {
   // Allow read of application content types
   await setPublicPermissions({
@@ -244,6 +389,8 @@ async function importSeedData() {
     author: ['find', 'findOne'],
     global: ['find', 'findOne'],
     about: ['find', 'findOne'],
+    pack: ['find', 'findOne'],
+    project: ['find', 'findOne'],
   });
 
   // Create all entries
@@ -252,6 +399,8 @@ async function importSeedData() {
   await importArticles();
   await importGlobal();
   await importAbout();
+  await importPacks();
+  await importProjects();
 }
 
 async function main() {
