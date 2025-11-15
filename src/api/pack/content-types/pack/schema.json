@@ -92,6 +92,22 @@
     "order": {
       "type": "integer",
       "default": 0
+    },
+    "delay": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "idealFor": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
