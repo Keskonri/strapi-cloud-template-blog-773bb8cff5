@@ -9,8 +9,8 @@ const { articlesFR, articlesEN } = require('../data/articles');
 async function seedExampleApp() {
   const shouldImportSeedData = await isFirstRun();
 
-  // FORCE IMPORT - Temporarily bypassing the first run check
-  if (true) {
+  // Only import seed data on first run
+  if (shouldImportSeedData) {
     try {
       console.log('Setting up the template...');
       await importSeedData();
@@ -21,7 +21,7 @@ async function seedExampleApp() {
     }
   } else {
     console.log(
-      'Seed data has already been imported. We cannot reimport unless you clear your database first.'
+      'Seed data has already been imported. Skipping seed import to preserve existing content.'
     );
   }
 }
